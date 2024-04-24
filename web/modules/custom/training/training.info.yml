@@ -1,0 +1,5 @@
+name: 'My first custom Drupal moudule'
+type: module
+core_version_requirement: ^10
+description: 'Code to start developing Drupal'
+package: 'training for Drupal module development'

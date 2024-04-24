@@ -4,3 +4,4 @@ mutagen.yml.lock
 vendor
 /.editorconfig
 /.gitattributes
+*Zone.Identifier
