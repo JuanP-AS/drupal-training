@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * hooks?
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function training_cron() {
+  \Drupal::messenger()->addError(t("Alert via cron_hook!"));
+}
