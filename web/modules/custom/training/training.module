@@ -11,3 +11,13 @@
 function training_cron() {
   \Drupal::messenger()->addError(t("Alert via cron_hook!"));
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function training_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  \Drupal::messenger()->addMessage(t("form_id of this form is @id: ", ['@id' => $form_id]));
+  if ($form_id == 'node_article_edit_form') {
+    $form['actions']['submit']['#value'] = t('Save Edited Article');
+  }
+}
