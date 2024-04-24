@@ -1,0 +1,15 @@
+training.simplecontent:
+  path: '/training'
+  defaults:
+    _controller: '\Drupal\training\Controller\FirstController::simpleContent'
+    _title: 'Training Simple Content'
+  requirements:
+    _permission: 'access content'
+
+training.variableContent:
+  path: '/training/{name_1}/{name_2}'
+  defaults:
+    _controller: '\Drupal\training\Controller\FirstController::variableContent'
+    _title: 'Path Variables'
+  requirements:
+    _permission: 'access content'

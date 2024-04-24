@@ -1,0 +1,6 @@
+training.simplecontentpage:
+  title: Simple Content
+  description: Rando Descrip # optional tooltip
+  route_name: training.simplecontent
+  weight: 10
+  menu_name: main # This is the machine name of the menu we want to add this link to, not the title of the menu that's the title duh
