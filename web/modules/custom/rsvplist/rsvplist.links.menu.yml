@@ -1,0 +1,21 @@
+rsvplist.admin_settings_link:
+  title: RSVP List Settings
+  description: 'Administer RSVP List settings.'
+  route_name: rsvplist.admin_settings
+  parent: system.admin_config_content
+  weight: 10
+
+rsvplist.report_menu_link: # Even the content is data is different if this tag is the same a below, it will be overwritten
+  title: RSVP Report
+  description: 'View RSVP Report'
+  route_name: rsvp.report_page
+  parent: system.admin_reports
+  weight: -5
+
+rsvplist.main_report_link:
+  title: RSVP Report
+  description: 'View RSVP Report'
+  route_name: rsvp.report_page
+  # parent: system.admin_reports #Different kind of menu association
+  menu_name: main
+  weight: 10
