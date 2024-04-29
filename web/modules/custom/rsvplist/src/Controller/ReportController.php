@@ -63,4 +63,20 @@ class ReportController extends ControllerBase {
 
     return $content;
   }
+
+  public function report1() {
+    $table_rows = $this->load();
+
+    $build = [
+      '#theme' => 'rsvplist_report',
+      '#message' => $this->t('Below is a list of all the RSVPs for the site.'),
+      '#table_rows' => $table_rows,
+      '#empty_message' => $this->t('No entries available.'),
+    ];
+
+    // Do not cache this page by setting the max-age to 0
+    $build['#cache']['max-age'] = 0;
+
+    return $build;
+  }
 }

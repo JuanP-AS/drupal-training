@@ -10,6 +10,6 @@ rsvp.report_page:
   path: '/admin/rsvplist/report'
   defaults:
     _title: 'RSVP Report'
-    _controller: '\Drupal\rsvplist\Controller\ReportController::report'
+    _controller: '\Drupal\rsvplist\Controller\ReportController::report1'
   requirements:
     _permission: 'access content'

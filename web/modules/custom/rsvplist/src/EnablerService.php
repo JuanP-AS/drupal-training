@@ -20,15 +20,15 @@ class EnablerService {
 
   public function isEnabled(Node &$node) {
     if ($node->isNew()) {
-      return FALSE;
+      return false;
     }
     try {
       $select = $this->database_connection->select('rsvplist_enabled', 're');
       $select->fields('re', ['nid']);
       $select->condition('nid', $node->id());
-      $result = $select->execute();
+      $result = $select->execute()->fetch();
 
-      return !empty($result->fetch());
+      return !empty($result);
     } catch (\Exception $e) {
       \Drupal::messenger()->addError(
         t('Unable to determine RSVP settings at this time. Please try again later.')

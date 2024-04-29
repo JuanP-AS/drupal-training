@@ -1,0 +1,26 @@
+{# rsvplist-report.html.twig #}
+
+<h2>{{ message }}</h2>
+
+{% if table_rows is empty %}
+  <p>{{ empty_message }}</p>
+{% else %}
+  <table>
+    <thead>
+      <tr>
+        <th>{{ 'Username'|t }}</th>
+        <th>{{ 'Email'|t }}</th>
+        <th>{{ 'Event'|t }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in table_rows %}
+        <tr>
+          <td>{{ row.name }}</td>
+          <td>{{ row.email }}</td>
+          <td>{{ row.title }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
