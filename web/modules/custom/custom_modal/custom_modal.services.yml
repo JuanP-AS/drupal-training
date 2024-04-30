@@ -1,0 +1,3 @@
+services:
+  custom_modal.modal:
+    class: Drupal\custom_modal\ModalService

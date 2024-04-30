@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Contains custom_modal.module.
+ */
+
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_node_presave().
+ */
+function custom_modal_node_presave(NodeInterface $node) {
+  $current_node_type = $node->getType();
+  \Drupal::messenger()->addError($current_node_type);
+  if ($current_node_type === 'article') {
+    // $node->setTitle('This title was altered by custom_modal_node_presave');
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function custom_modal_entity_presave(EntityInterface $entity) {
+  $current_node_type = $entity->getEntityType();
+  \Drupal::messenger()->addError($current_node_type);
+  if ($current_node_type === 'article' && $entity instanceof ContentEntityInterface) {
+    $entity->set('title', 'This comes from a hook!, let watch');
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function custom_modal_theme($existing, $type, $theme, $path) {
+  return [
+    'custom_modal_backdrop' => [
+      'variables' => ['title' => NULL, 'content' => NULL],
+    ],
+  ];
+}

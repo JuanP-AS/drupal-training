@@ -1,0 +1,10 @@
+name: custom modal
+type: module
+core_version_requirement: ^10
+description: 'A custom modal module.'
+package: Custom Modal
+
+dependencies:
+  - drupal:block
+
+configure: custom_modal.admin_settings

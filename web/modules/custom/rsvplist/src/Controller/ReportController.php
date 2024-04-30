@@ -68,8 +68,8 @@ class ReportController extends ControllerBase {
     $table_rows = $this->load();
 
     $build = [
-      '#theme' => 'rsvplist_report',
-      '#message' => $this->t('Below is a list of all the RSVPs for the site.'),
+      '#theme' => 'rsvplist_report', // Twig templates
+      '#message' => $this->t('Below is a list of all the RSVPs for the site.'), // variables for the template⬇️
       '#table_rows' => $table_rows,
       '#empty_message' => $this->t('No entries available.'),
     ];
