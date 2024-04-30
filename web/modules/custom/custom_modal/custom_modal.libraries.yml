@@ -3,3 +3,5 @@ custom_modal_styles:
   css:
     theme:
       css/custom-modal-base.css: {}
+  js:
+    js/customModal.js: {}

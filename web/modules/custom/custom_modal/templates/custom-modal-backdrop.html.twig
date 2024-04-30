@@ -1,7 +1,9 @@
-<div class="modal-backdrop">
+<div id="my-custom-modal" class="modal-backdrop" onkeyup="handleKeyUp(event)">
+    <div class="modal-deadzone" onClick="closeModal()">
+    </div>
     <div class="modal-content">
-        {% if title %}
-            <h2>{{ title }}</h2>
+        {% if modal_title %}
+        <h2>{{ modal_title }}</h2>
         {% endif %}
         {{ content }}
     </div>

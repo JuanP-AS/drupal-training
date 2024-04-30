@@ -25,16 +25,19 @@ class CustomModalBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    // return \Drupal::formBuilder()->getForm('Drupal\rsvplist\Form\RSVPForm');
+    $test = \Drupal::formBuilder()->getForm('Drupal\rsvplist\Form\RSVPForm');
     $build = [
       '#theme' => 'custom_modal_backdrop',
-      '#title' => 'This is the title of the modal',
-      '#content' => 'This is the content of the modal',
+      '#modal_title' => 'This is the title of the modal',
+      '#content' => $test,
       '#attached' => [
         'library' => [
           'custom_modal/custom_modal_styles'
         ]
-      ]
+      ],
+      '#cache' => [
+        'max-age' => 0
+      ],
     ];
 
     return $build;
