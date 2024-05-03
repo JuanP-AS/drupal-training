@@ -1,0 +1,7 @@
+custom_modal.admin_settings:
+  path: '/admin/config/content/modal'
+  defaults:
+    _form: '\Drupal\custom_modal\Form\CustomModalSettingsForm'
+    _title: 'Custom Modal Settings'
+  requirements:
+    _permission: administer custom modal

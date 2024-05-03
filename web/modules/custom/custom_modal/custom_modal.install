@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the custom modal module.
+ */
+
+function custom_modal_schema() {
+  $schema['custom_modal_enabled'] = [
+    'description' => 'Stores whether the custom modal feature is enabled on a node.',
+    'fields' => [
+      'nid' => [
+        'description' => 'The {node}.nid that has the opening modal enabled.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'title' => [
+        'description' => 'Modal\'s title.',
+        'type' => 'varchar',
+        'length' => 48,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+      'content' => [
+        'description' => 'Content of the modal\'s body.',
+        'type' => 'varchar',
+        'length' => 1023,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => ['nid'],
+  ];
+
+  return $schema;
+}

@@ -1,0 +1,8 @@
+view custom modal:
+  title: 'View modal'
+  description: 'View custom modal.'
+
+administer custom modal:
+  title: 'Administer custom modal Settings'
+  description: 'access the custom modal administrative settings page.'
+  restrict access: true

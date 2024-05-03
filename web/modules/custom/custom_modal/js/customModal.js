@@ -1,9 +1,14 @@
-function closeModal() {
+window.onload = () => {
+  const modal = document.getElementById('my-custom-modal');
+  modal.focus();
+};
+
+const closeModal = () => {
   const modal = document.getElementById('my-custom-modal');
   modal.style.display = 'none';
 }
 
-function handleKeyUp(event) {
+const handleKeyUp = (event) => {
   if (event.keyCode === 27) {
     closeModal();
   }

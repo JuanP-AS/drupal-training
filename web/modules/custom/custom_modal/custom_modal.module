@@ -7,6 +7,7 @@
 
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\node\NodeInterface;
 
 /**
@@ -30,6 +31,79 @@ function custom_modal_entity_presave(EntityInterface $entity) {
     $entity->set('title', 'This comes from a hook!, let watch');
   }
 }
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function custom_modal_form_node_form_alter(&$form, FormStateInterface $form_state) {
+  $node = $form_state->getFormObject()->getEntity();
+  $current_node_type = $node->getType();
+  $rsvp_config = \Drupal::config('custom_modal.settings');
+  $allowed_types = $rsvp_config->get('allowed_types');
+
+  if (in_array($current_node_type, $allowed_types)) {
+    $form['custom_modal'] = [
+      '#type' => 'details',
+      '#title' => t('Custom Modal'),
+      '#access' => \Drupal::currentUser()->hasPermission('administer custom modal'),
+      '#group' => 'advanced',
+      '#weight' => 50,
+    ];
+
+    $service = \Drupal::service('custom_modal.modal_service');
+    $isEnabled = $service->isEnabled($node);
+    $title = '';
+    $content = '';
+    if ($isEnabled) {
+      $title = $service->getTitle($node);
+      $content = $service->getContent($node);
+    }
+
+    $form['custom_modal']['custom_modal_enabled'] = [
+      '#type' => 'checkbox',
+      '#title' => t('Open a modal with a message when visiting this page.'),
+      '#default_value' => $isEnabled,
+    ];
+
+    $form['custom_modal']['custom_modal_title'] = [
+      '#type' => 'textfield',
+      '#title' => t('Modal\'s title.'),
+      '#default_value' => $title,
+      '#maxlength' => 48,
+    ];
+
+    $form['custom_modal']['custom_modal_content'] = [
+      '#type' => 'text_format',
+      '#title' => t('Content of the modal\'s body.'),
+      '#default_value' => $content,
+    ];
+  }
+
+  foreach ($form['actions'] as $action => $_) {
+    if ($action !== 'preview' && isset($form['actions'][$action]['#type'])
+      && $form['actions'][$action]['#type'] === 'submit') {
+      $form['actions'][$action]['#submit'][] = 'custom_modal_form_node_form_submit';
+    }
+  }
+}
+
+/**
+ * Form submission handler for modal settings on the node form.
+ */
+function custom_modal_form_node_form_submit(&$form, FormStateInterface $form_state) {
+  $enabler = \Drupal::service('custom_modal.modal_service');
+  $node = $form_state->getFormObject()->getEntity();
+
+  $title_value = $form_state->getValue('custom_modal_title');
+  $content_value = $form_state->getValue('custom_modal_content')['value'];
+
+  if ($form_state->getValue('custom_modal_enabled')) {
+    $enabler->setEnabled($node, $title_value, $content_value);
+  } else {
+    $enabler->deleteEnabled($node);
+  }
+}
+
 
 /**
  * Implements hook_theme().

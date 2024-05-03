@@ -28,4 +28,14 @@
     border-radius: 10px;
     padding: 20px;
     z-index: 2;
+    gap: 10px;
+}
+
+.modal-content > * {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.block-custom-modal-block > .block__title {
+    display: none;
 }
