@@ -16,6 +16,10 @@ function training_cron() {
  * Implements hook_form_alter().
  */
 function training_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $path_matcher = \Drupal::service('path.matcher');
+  if ($path_matcher->isFrontPage()) {
+    \Drupal::messenger()->addMessage(t("This is the front page!"));
+  }
   // \Drupal::messenger()->addMessage(t("form_id of this form is @id: ", ['@id' => $form_id]));
   // if ($form_id == 'node_article_edit_form') {
   //   $form['actions']['submit']['#value'] = t('Save Edited Article');
