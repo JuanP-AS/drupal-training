@@ -6,3 +6,4 @@ vendor
 /.gitattributes
 *Zone.Identifier
 web/sites/default/files
+node_modules

@@ -1,0 +1,15 @@
+diff --git a/web/core/themes/olivero/css/base/variables.css b/web/core/themes/olivero/css/base/variables.css
+index 0ec1c1dc..1ef3f3e1 100644
+--- a/web/core/themes/olivero/css/base/variables.css
++++ b/web/core/themes/olivero/css/base/variables.css
+@@ -12,8 +12,8 @@
+ /* stylelint-disable */
+ 
+ :root {
+-  --font-sans: "metropolis", sans-serif;
+-  --font-serif: "Lora", "georgia", serif;
++  --font-sans: "Comic Sans MS";
++  --font-serif: "Comic Sans MS";
+ 
+   /* Typography helpers. */
+   --font-size-base: 1rem;

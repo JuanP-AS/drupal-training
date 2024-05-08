@@ -12,8 +12,8 @@
 /* stylelint-disable */
 
 :root {
-  --font-sans: "metropolis", sans-serif;
-  --font-serif: "Lora", "georgia", serif;
+  --font-sans: "Comic Sans MS";
+  --font-serif: "Comic Sans MS";
 
   /* Typography helpers. */
   --font-size-base: 1rem;
