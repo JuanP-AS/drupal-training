@@ -1,0 +1,24 @@
+{
+  "name": "training-project",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://github.com/wodby/docker4drupal/workflows/Run%20tests/badge.svg)](https://github.com/wodby/docker4drupal/actions)",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp",
+    "sass": "gulp compileSass",
+    "watch": "gulp watchSass"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^5.0.0",
+    "gulp-dart-sass": "^1.1.0",
+    "gulp-sass": "^5.1.0"
+  }
+}
